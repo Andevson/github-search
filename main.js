@@ -1,20 +1,33 @@
+function updateUser(user){
+    if(user.name == null){
+        user.name = "Não há dados.";
+    }
+    if(user.bio == null){
+        user.bio = "Não há dados.";
+    }
+    document.getElementById("header").innerHTML = 
+    `
+        <img width = "100px" height = "100px" src = "${user.avatar}"></img>
+        <p>${user.name}</p>
+        <p>${user.bio}</p>
+    `;
+}
 function getUser(userName){
-    userData = async function getUserData(userName){
+    async function getUserData(userName){
         const result = await fetch(`https://api.github.com/users/${userName}`);
         const person =  result.json();
+        console.log(person);
         return person;
-    }();
-    userData.then(
-        u => {
-            user = {
+    }
+    userData = getUserData(userName).then(
+        u => updateUser({
                 name : u.name,
                 bio : u.bio,
                 url : u.url,
-                avatar : user.avatar_url
-            };
-        }
+                avatar : u.avatar_url
+            })
     );
 }
-var user;
-getUser("andevson");
-//console.log(usuario.name);
+function searchUser(){
+    getUser(document.getElementById("get-user-input").value);
+}
