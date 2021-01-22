@@ -67,7 +67,11 @@ function searchUser(){
 function authentication(login, password){
     if(login == "admin" && password == "password"){
         window.localStorage.setItem("login", login);
-        window.location.href = '/user-search.html';
+        document.getElementById("login-a").innerHTML = 
+        `
+            <a href = "user-search.html" style = "color : white;">Entrar</a>
+        `;
+        
     }else{
         alert("Usuário ou senha inválidos");
     }
