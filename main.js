@@ -31,3 +31,16 @@ function getUser(userName){
 function searchUser(){
     getUser(document.getElementById("get-user-input").value);
 }
+function authentication(login, password){
+    if(login == "admin" && password == "password"){
+        window.localStorage.setItem("login", login);
+        window.pathname = '/user-search.html';
+    }else{
+        alert("Usuário ou senha inválidos");
+    }
+}
+function logIn(){
+    let login = document.getElementById("login").value;
+    let password = document.getElementById("password").value;
+    authentication(login, password);
+}
