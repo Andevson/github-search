@@ -5,18 +5,33 @@ function updateUser(user){
     if(user.bio == null){
         user.bio = "Não há dados.";
     }
-    document.getElementById("header").innerHTML = 
+    document.getElementById("render-users").innerHTML = 
     `
-        <img width = "100px" height = "100px" src = "${user.avatar}"></img>
-        <p>${user.name}</p>
-        <p>${user.bio}</p>
+        <img src = "${user.avatar}" class = "img-fluid rounded p-4" alt="Responsive image"></img>
+        <p class = "border">Nome : ${user.name}</p>
+        <p class = "border">Bio : ${user.bio}</p>
     `;
 }
+function updateRepos(repos){
+    var htmlRepos = "";
+    function updateEachRepos(item){
+        htmlRepos +=
+        `
+            <div class = "border p-2">
+                <p>Name : ${item.name}</p>
+                <p>Description : ${item.description}</p>
+                <p><a href = "${item.html_url}">link</a></p>
+            </div>
+        `;
+    }
+    repos.u.forEach(updateEachRepos);
+    document.getElementById("render-repos").innerHTML = htmlRepos;
+}
+
 function getUser(userName){
     async function getUserData(userName){
-        const result = await fetch(`https://api.github.com/users/${userName}`);
-        const person =  result.json();
-        console.log(person);
+        const userResult = await fetch(`https://api.github.com/users/${userName}`);
+        const person =  userResult.json();
         return person;
     }
     userData = getUserData(userName).then(
@@ -28,10 +43,23 @@ function getUser(userName){
             })
     );
 }
+function getRepos(userName){
+    async function getReposData(userName){
+        const reposResult = await fetch(`https://api.github.com/users/${userName}/repos`);
+        const repository =  reposResult.json();
+        return repository;
+    }
+    userData = getReposData(userName).then(
+        u => updateRepos({
+                u
+            })
+    );
+}
 function searchUser(){
     let userInput = document.getElementById("get-user-input").value;
     if(userInput != ""){
         getUser(userInput);
+        getRepos(userInput);
     }else{
         alert("Digite um id de usuário");
     }
@@ -39,7 +67,7 @@ function searchUser(){
 function authentication(login, password){
     if(login == "admin" && password == "password"){
         window.localStorage.setItem("login", login);
-        window.location.href = '#user-search.html';
+        window.location.href = '/user-search.html';
     }else{
         alert("Usuário ou senha inválidos");
     }
