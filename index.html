@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta>
-        <title>
-            Log in
-        </title>
+        <meta charset = "utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Log in</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     </head>
     <body>
-        <form>
-            <input type = "text" placeholder = "Usuário" id = "login"><br>
-            <input type = "password" placeholder = "Senha" id = "password"><br>
-            <button id = "login-btn" onclick="logIn()">Entrar</button><br>
-        </form>
+        <section class = "p-4">
+            <h2>Entre com uma conta</h2>
+            <form class = "form-group">
+                <input type = "text" placeholder = "Usuário" id = "login" class = "form-control"><br>
+                <input type = "password" placeholder = "Senha" id = "password" class = "form-control"><br>
+                <button id = "login-btn" onclick="logIn()" class = "btn btn-primary">Entrar</button><br>
+            </form>
+        </section>
         <script src = "main.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     </body>
 </html>

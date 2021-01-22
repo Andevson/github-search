@@ -29,12 +29,17 @@ function getUser(userName){
     );
 }
 function searchUser(){
-    getUser(document.getElementById("get-user-input").value);
+    let userInput = document.getElementById("get-user-input").value;
+    if(userInput != ""){
+        getUser(userInput);
+    }else{
+        alert("Digite um id de usuário");
+    }
 }
 function authentication(login, password){
     if(login == "admin" && password == "password"){
         window.localStorage.setItem("login", login);
-        window.pathname = '/user-search.html';
+        window.location.href = '#user-search.html';
     }else{
         alert("Usuário ou senha inválidos");
     }
@@ -44,3 +49,5 @@ function logIn(){
     let password = document.getElementById("password").value;
     authentication(login, password);
 }
+
+document.getElementById("login-span").innerHTML = window.localStorage.getItem("login");
