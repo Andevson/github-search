@@ -8,8 +8,10 @@ Digite o id de algum usuário que deseja pesquisar e clique em buscar.
 As informações do usuário e repositórios aparecerão na mesma página.
 Pesquise um novo usuário ou clique em sair para encerrar a sessão.
 
+Acesso : https://andevson.github.io/github-search/
+
 [x] Obter dados de usuários e repositórios do github.<br>
 [x] Exibir dados recuperados em uma interface.<br>
 [x] Exibir repositórios recuperados em uma interface.<br>
 [x] Interface de log in do sistema.<br>
-[] Layout resposivo.<br>
+[x] Layout resposivo.<br>
